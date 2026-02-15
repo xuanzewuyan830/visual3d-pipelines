@@ -1,0 +1,7 @@
+Prompt_For_Multiple_Pipeline_Parameter_Values
+/PIPELINE_PARAMETER_NAME=
+/DATATYPE=
+! /DEFAULT_VALUE=
+! /DEFAULT_VALUE_COUNT=1
+! /PROMPT_TEXT=Modify Pipeline Parameters
+;
