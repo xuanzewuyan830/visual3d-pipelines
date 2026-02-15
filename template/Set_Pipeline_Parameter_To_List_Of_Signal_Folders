@@ -1,0 +1,5 @@
+Set_Pipeline_Parameter_To_List_Of_Signal_Folders
+/PARAMETER_NAME=
+! /SIGNAL_TYPES=
+! /FOLDER_MASK=*
+;
