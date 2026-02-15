@@ -1,0 +1,5 @@
+Automatic_Gait_Events
+! /FRAME_WINDOW=8
+! /USE_TPR=TRUE
+! /TPR_EVENT_INSTANCE=1
+;
