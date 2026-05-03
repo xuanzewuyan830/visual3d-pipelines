@@ -1,0 +1,5 @@
+Select_Active_File
+/FILE_NAME=ALL_FILES
+/QUERY=::TAG
+! /SUBJECT_TAGS=NO_SUBJECT
+;
