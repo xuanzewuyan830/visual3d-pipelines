@@ -1,0 +1,92 @@
+
+! ============================================================================
+!	Kinematic Gait Events
+! ============================================================================
+
+! This step is not necessary, but important to make sure that 
+!	any events that were previously created are deleted
+
+Event_Delete
+/EVENT_NAME=RHS+LHS
+! /EVENT_SEQUENCE=
+! /EXCLUDE_EVENTS=
+! /EVENT_INSTANCE=
+! /TIME=
+;
+
+! ----------------------------------------------------------------------------
+!  Calculate the Hip Angle
+! ----------------------------------------------------------------------------
+
+Compute_Model_Based_Data
+/RESULT_NAME=RHip_Angle
+/FUNCTION=JOINT_ANGLE
+/SEGMENT=RTH
+/REFERENCE_SEGMENT=RPV
+/RESOLUTION_COORDINATE_SYSTEM=
+! /USE_CARDAN_SEQUENCE=FALSE
+! /NORMALIZATION=FALSE
+/NORMALIZATION_METHOD=TRUE
+! /NORMALIZATION_METRIC=
+! /NEGATEX=FALSE
+! /NEGATEY=FALSE
+! /NEGATEZ=FALSE
+! /AXIS1=X
+! /AXIS2=Y
+! /AXIS3=Z
+;
+
+Compute_Model_Based_Data
+/RESULT_NAME=LHip_Angle
+/FUNCTION=JOINT_ANGLE
+/SEGMENT=LTH
+/REFERENCE_SEGMENT=RPV
+/RESOLUTION_COORDINATE_SYSTEM=
+! /USE_CARDAN_SEQUENCE=FALSE
+! /NORMALIZATION=FALSE
+/NORMALIZATION_METHOD=TRUE
+! /NORMALIZATION_METRIC=
+! /NEGATEX=FALSE
+/NEGATEY=TRUE
+/NEGATEZ=TRUE
+! /AXIS1=X
+! /AXIS2=Y
+! /AXIS3=Z
+;
+
+! ----------------------------------------------------------------------------
+!  Create Events
+!		- Heel Strike: 
+! ----------------------------------------------------------------------------
+
+! Right Heel strike from peak contralateral Hip Extension in sagittal plane
+
+Event_Minimum
+/SIGNAL_TYPES=LINK_MODEL_BASED
+/SIGNAL_NAMES=LHip_Angle
+! /SIGNAL_FOLDER=ORIGINAL
+/EVENT_NAME=RHS
+/SELECT_X=TRUE
+!/SELECT_Y=FALSE
+! /SELECT_Z=FALSE
+! /FRAME_WINDOW=8
+! /START_AT_EVENT=
+! /END_AT_EVENT=
+/EVENT_INSTANCE=0
+;
+
+! Left Heel strike from peak contralateral Hip Extension in sagittal plane
+
+Event_Minimum
+/SIGNAL_TYPES=LINK_MODEL_BASED
+/SIGNAL_NAMES=RHip_Angle
+! /SIGNAL_FOLDER=ORIGINAL
+/EVENT_NAME=LHS
+/SELECT_X=TRUE
+!/SELECT_Y=FALSE
+! /SELECT_Z=FALSE
+! /FRAME_WINDOW=8
+! /START_AT_EVENT=
+! /END_AT_EVENT=
+/EVENT_INSTANCE=0
+;
